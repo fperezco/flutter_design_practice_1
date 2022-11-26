@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class BasicScreen extends StatelessWidget {
+  const BasicScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,57 +11,41 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       body: Column(children: [
-        _topImage(_screenSize),
-        _bodyContent1(_screenSize, context),
-        _bodyContent2(_screenSize, context),
-        _bodyContent3(_screenSize, context, _description),
+        TopImage(),
+        SiteTitleAndRating(),
+        ActionsMenu(),
+        DescriptionText(),
       ]),
     );
   }
 
-  Widget _topImage(Size screenSize) {
-    return Container(
-      width: double.infinity,
-      height: screenSize.height * 0.3,
-      child: Image(
-        image: AssetImage('assets/landscape.jpg'),
-        height: double.infinity,
-        width: double.infinity,
-        fit: BoxFit.fill,
-      ),
-    );
-  }
+}
 
-  Widget _bodyContent1(Size screenSize, BuildContext context) {
+class DescriptionText extends StatelessWidget {
+  const DescriptionText({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 20.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Column(
-            children: [
-              Text("Walk over the country",
-                  style: Theme.of(context).textTheme.headline6),
-              Text("Barbate, Spain",
-                  style: Theme.of(context).textTheme.subtitle1),
-            ],
-            crossAxisAlignment: CrossAxisAlignment.start,
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.star,
-                color: Colors.orange,
-              ),
-              Text("41"),
-            ],
-          )
-        ],
+      width: screenSize.width * 0.9,
+      child: Text(
+        description,
+        textAlign: TextAlign.justify,
       ),
     );
   }
+}
 
-  Widget _bodyContent2(Size screenSize, BuildContext context) {
+class ActionsMenu extends StatelessWidget {
+  const ActionsMenu({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 20.0),
       width: screenSize.width * 0.8,
@@ -111,14 +95,60 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}
 
-  _bodyContent3(Size screenSize, BuildContext context, String description) {
+class SiteTitleAndRating extends StatelessWidget {
+  const SiteTitleAndRating({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 20.0),
-      width: screenSize.width * 0.9,
-      child: Text(
-        description,
-        textAlign: TextAlign.justify,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Column(
+            children: [
+              Text("Walk over the country",
+                  style: Theme.of(context).textTheme.headline6),
+              Text("Barbate, Spain",
+                  style: Theme.of(context).textTheme.subtitle1),
+            ],
+            crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+          Row(
+            children: [
+              Icon(
+                Icons.star,
+                color: Colors.orange,
+              ),
+              Text("41"),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class TopImage extends StatelessWidget {
+  const TopImage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
+    return Container(
+      width: double.infinity,
+      height: _screenSize.height * 0.3,
+      child: Image(
+        image: AssetImage('assets/landscape.jpg'),
+        height: double.infinity,
+        width: double.infinity,
+        fit: BoxFit.fill,
       ),
     );
   }

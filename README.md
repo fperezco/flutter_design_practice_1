@@ -1,6 +1,10 @@
 # flutter_design_practice_1
 
-A new Flutter project.
+Just a practice about design in Flutter concernig Scaffold, colums, rows, margin, styles, etc..
+
+From the Fernando Herrera couse at udemy.com
+
+<img src="doc_snapshots/global_overview.png" width="250" height="auto" alt="Global overview"/>
 
 ## Getting Started
 

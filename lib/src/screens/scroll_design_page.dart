@@ -6,9 +6,24 @@ class ScrollDesignPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: const [Background(), MainColumnContent()],
+      body: PageView(
+        //physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.vertical, //scroll direction
+        children: [Page1(), Page2()],
       ),
+    );
+  }
+}
+
+class Page1 extends StatelessWidget {
+  const Page1({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: const [Background(), MainColumnContent()],
     );
   }
 }
@@ -42,7 +57,6 @@ class MainColumnContent extends StatelessWidget {
     final customTextStyle =
         TextStyle(color: Colors.white, fontSize: screenSize.height * 0.07);
 
-
     return SafeArea(
       child: Container(
         padding: const EdgeInsets.only(
@@ -64,6 +78,30 @@ class MainColumnContent extends StatelessWidget {
                 color: Colors.white,
               )
             ]),
+      ),
+    );
+  }
+}
+
+class Page2 extends StatelessWidget {
+  const Page2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue,
+      child: Center(
+        child: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: Colors.lightBlue,
+              padding: const EdgeInsets.all(20.0),
+              shape: const StadiumBorder()),
+          onPressed: null,
+          child: const Text(
+            "Bienvenido",
+            style: TextStyle(fontSize: 20.0, color: Colors.white),
+          ),
+        ),
       ),
     );
   }

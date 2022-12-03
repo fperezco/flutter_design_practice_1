@@ -11,8 +11,8 @@ Design 3: about stack, tables, tablerows, linearGradients, blur effects
 From the Fernando Herrera couse at udemy.com
 
 <img src="doc_snapshots/global_overview.png" width="250" height="auto" alt="Global overview"/>
-<img src="doc_snapshots/design3.png" width="250" height="auto" alt="Design 2"/>
-<img src="doc_snapshots/scroll.png" width="250" height="auto" alt="Design 3"/>
+<img src="doc_snapshots/scroll.png" width="250" height="auto" alt="Design 2"/>
+<img src="doc_snapshots/design3.png" width="250" height="auto" alt="Design 3"/>
 
 ## Getting Started
 

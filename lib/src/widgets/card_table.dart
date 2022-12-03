@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class CardTable extends StatelessWidget {
@@ -11,26 +13,17 @@ class CardTable extends StatelessWidget {
         TableRow(
           children: [
             _SingleCard(
-                icon: Icon(Icons.pie_chart, size: 40),
-                text: "Option A",
-                color: Colors.blue),
+                icon: Icons.pie_chart, text: "Option A", color: Colors.blue),
             _SingleCard(
-                icon: Icon(Icons.calculate, size: 40),
-                text: "Option B",
-                color: Colors.purple),
+                icon: Icons.calculate, text: "Option B", color: Colors.purple),
           ],
         ),
         TableRow(
           children: [
             _SingleCard(
-                icon: Icon(
-                  Icons.subject,
-                  size: 40,
-                ),
-                text: "Option C",
-                color: Colors.pink),
+                icon: Icons.subject, text: "Option C", color: Colors.pink),
             _SingleCard(
-                icon: Icon(Icons.document_scanner, size: 40),
+                icon: Icons.document_scanner,
                 text: "Option D",
                 color: Colors.brown),
           ],
@@ -38,13 +31,19 @@ class CardTable extends StatelessWidget {
         TableRow(
           children: [
             _SingleCard(
-                icon: Icon(Icons.shop, size: 40),
-                text: "Option E",
-                color: Colors.black),
+                icon: Icons.shop, text: "Option E", color: Colors.black),
             _SingleCard(
-                icon: Icon(Icons.search_off, size: 40),
-                text: "Option F",
-                color: Colors.green),
+                icon: Icons.search_off, text: "Option F", color: Colors.green),
+          ],
+        ),
+        TableRow(
+          children: [
+            _SingleCard(
+                icon: Icons.car_rental,
+                text: "Option G",
+                color: Colors.blueAccent),
+            _SingleCard(
+                icon: Icons.hotel, text: "Option H", color: Colors.orange),
           ],
         )
       ],
@@ -53,12 +52,12 @@ class CardTable extends StatelessWidget {
 }
 
 class _SingleCard extends StatelessWidget {
-  final Icon icon;
+  final IconData icon;
   final Color color;
   final String text;
 
   const _SingleCard(
-      {required Icon this.icon,
+      {required IconData this.icon,
       required String this.text,
       required Color this.color});
 
@@ -66,24 +65,33 @@ class _SingleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(15),
-      height: 180,
-      decoration: BoxDecoration(
-          color: Color.fromRGBO(62, 66, 107, 0.7),
-          borderRadius: BorderRadius.circular(20.0)),
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        CircleAvatar(
-          backgroundColor: color,
-          child: icon,
-          radius: 30,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Container(
+            height: 180,
+            decoration: BoxDecoration(
+                color: Color.fromRGBO(62, 66, 107, 0.7),
+                borderRadius: BorderRadius.circular(20.0)),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              CircleAvatar(
+                backgroundColor: color,
+                child: Icon(icon, size: 35, color: Colors.white),
+                radius: 30,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                text,
+                style: TextStyle(fontSize: 20, color: color),
+              )
+            ]),
+          ),
         ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          text,
-          style: TextStyle(fontSize: 20, color: color),
-        )
-      ]),
+      ),
     );
   }
 }

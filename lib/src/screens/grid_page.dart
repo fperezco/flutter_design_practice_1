@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_practice_1/src/widgets/customBackground.dart';
+import 'package:flutter_design_practice_1/src/widgets/custom_background.dart';
+import 'package:flutter_design_practice_1/src/widgets/custom_bottom_navigation_bar.dart';
 
 import '../widgets/page_title.dart';
 
@@ -16,6 +17,7 @@ class GridPage extends StatelessWidget {
           _HomeBody(),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

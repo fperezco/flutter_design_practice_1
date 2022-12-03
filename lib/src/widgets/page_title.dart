@@ -8,8 +8,9 @@ class PageTitle extends StatelessWidget {
     return SafeArea(
       bottom: false,
       child: Container(
+            width: double.infinity,
             margin: const EdgeInsets.only(
-              left: 20.0,
+              left: 30.0,
               top: 50.0,
               right: 0.0,
               bottom: 0.0,
@@ -19,7 +20,7 @@ class PageTitle extends StatelessWidget {
             children: [
             Text("Header title & yeah", style: TextStyle(color: Colors.white,fontSize: 25.0,fontWeight: FontWeight.bold)),
             SizedBox(height: 10.0),
-            Text("subtitle blablbalbal sadfdsf efsdaf ",style: TextStyle(color: Colors.white,fontSize: 20.0))]),
+            Text("subtitle blablbalbal sadfdsf efsdaf dsasef dsafasefaf dsf sesaef asdf ",style: TextStyle(color: Colors.white,fontSize: 20.0))]),
         ),
     );
   }

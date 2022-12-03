@@ -63,6 +63,31 @@ class _SingleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _SingleCardBackground(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      CircleAvatar(
+        backgroundColor: color,
+        child: Icon(icon, size: 35, color: Colors.white),
+        radius: 30,
+      ),
+      SizedBox(
+        height: 5,
+      ),
+      Text(
+        text,
+        style: TextStyle(fontSize: 20, color: color),
+      )
+    ]));
+  }
+}
+
+/// Focus on add background to the content inside the card
+class _SingleCardBackground extends StatelessWidget {
+  final Widget child;
+  const _SingleCardBackground({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(15),
       child: ClipRRect(
@@ -70,26 +95,11 @@ class _SingleCard extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: Container(
-            height: 180,
-            decoration: BoxDecoration(
-                color: Color.fromRGBO(62, 66, 107, 0.7),
-                borderRadius: BorderRadius.circular(20.0)),
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              CircleAvatar(
-                backgroundColor: color,
-                child: Icon(icon, size: 35, color: Colors.white),
-                radius: 30,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                text,
-                style: TextStyle(fontSize: 20, color: color),
-              )
-            ]),
-          ),
+              height: 180,
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(62, 66, 107, 0.7),
+                  borderRadius: BorderRadius.circular(20.0)),
+              child: this.child),
         ),
       ),
     );
